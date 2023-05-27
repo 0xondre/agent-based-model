@@ -8,6 +8,7 @@ public abstract class Citizen {
     private int balance;
     private int posX;
     private int posY;
+    private boolean mated;
     private final Board board = new Board();
 
     public Citizen(int x, int y,int money){
@@ -68,4 +69,11 @@ public abstract class Citizen {
     public abstract char getSymbol();
 
 
+    public boolean haveMated() {
+        return mated;
+    }
+
+    public void Mated() {
+        this.mated = true;
+    }
 }

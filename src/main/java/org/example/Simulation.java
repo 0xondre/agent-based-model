@@ -1,8 +1,8 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class Simulation {
 
@@ -39,7 +39,10 @@ public class Simulation {
                             // Normie interactions
                             case 'N' -> {
                                 if (temp.getSymbol() == 'N' || temp.getSymbol() == 'P') {
-                                    addList.add(board.generateCitizen(citizen.getPosX(), citizen.getPosY()));
+                                    if(!citizen.haveMated()) {
+                                        addList.add(board.generateCitizen(citizen.getPosX(), citizen.getPosY()));
+                                        citizen.Mated();
+                                    }
                                 } else if (temp.getSymbol() == 'M') {
                                     removeList.add(citizen);
                                     citizens.get(tempCitizen.indexOf(temp)-1).setBalance(new Random().nextInt(20));
@@ -53,7 +56,10 @@ public class Simulation {
                             // Policeman interactions
                             case 'P' -> {
                                 if (temp.getSymbol() == 'N' || temp.getSymbol() == 'P') {
-                                    addList.add(board.generateCitizen(citizen.getPosX(), citizen.getPosY()));
+                                    if(!citizen.haveMated()) {
+                                        addList.add(board.generateCitizen(citizen.getPosX(), citizen.getPosY()));
+                                        citizen.Mated();
+                                    }
                                 } else {
                                     removeList.add(temp);
                                     citizen.setBalance(new Random().nextInt(20));
@@ -119,13 +125,19 @@ public class Simulation {
             }
             return data;
         }
+        // Saving data from each turn to csv file
 
-        public void start() {
+        public void start() throws FileNotFoundException {
             int i=1;
+            CsvSaver csvSaver = new CsvSaver();
             while (i<=Options.TURN_AMOUNT) {
                 char[][] data = new char[Options.BOARD_WIDTH][Options.BOARD_HEIGHT];
 
+                // Interactions in this turn
                 data = interactions(data);
+
+                // Save to csv
+                csvSaver.saveToCsv(citizens,i);
 
                 // Print the board state
                 board.printBoard(data);
@@ -140,8 +152,9 @@ public class Simulation {
                     }
                 i++;
             }
+            csvSaver.close();
         }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Simulation simulation = new Simulation();
 
         // Create a starting amount of citizens
