@@ -154,6 +154,6 @@ public class Simulation {
 
         simulation.start();
 
-}
+    }
 }
 
