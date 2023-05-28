@@ -1,7 +1,6 @@
 package org.example;
 
 public class Normie extends Citizen{
-    private boolean mated=false;
     public Normie(int x, int y, int money){
         super(x,y,money);
 
