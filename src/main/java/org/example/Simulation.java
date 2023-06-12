@@ -140,7 +140,7 @@ public class Simulation {
 
                 // Print the board state
                 board.printBoard(data);
-                System.out.println(citizens.size());
+                System.out.println("Ilosc obiektów na mapie " + citizens.size());
                 System.out.println("Tura " + i);
 
                 // Pause between turns
