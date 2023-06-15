@@ -14,8 +14,8 @@ public class CsvSaver {
     public void saveToCsv(List<Citizen> citizens, int i){
         out.printf("\nTura %d\n", i);
         for(Citizen citizen : citizens){
-            out.print(citizen.getSymbol() + ",");
-            out.print(citizen.getBalance() + ",");
+            out.print(citizen.getSymbol() + " , ");
+            out.print(citizen.getBalance() + " , ");
 
         }
     }
