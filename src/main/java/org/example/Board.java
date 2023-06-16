@@ -3,24 +3,28 @@ package org.example;
 import java.util.Random;
 
 /**
- * Board class, used to check if object is in the valid position and generate new objects on it
+ * Class used to check if object is in the valid position and generate new objects on it
  */
 public class Board {
 
     /**
-     * default board constructor
+     * Default board constructor
      */
     public Board() {
 
     }
     /**
-     * return boolean describing if position is on the board
+     * Check if position is valid
+     * @param x position x
+     * @param y position y
+     * @return boolean describing if position is on the board
      */
     public boolean isValidPosition(int x, int y) {
         return x >= 0 && x < Options.BOARD_WIDTH && y >= 0 && y < Options.BOARD_HEIGHT;
     }
     /**
-     * print the board to the terminal
+     * Print the board to the terminal
+     * @param data board state
      */
     public void printBoard(char[][] data)  {
         for (int y = 0; y < Options.BOARD_HEIGHT; y++) {
@@ -33,7 +37,8 @@ public class Board {
         }
     }
     /**
-     * method used to generate new Citizens without specific coordinates
+     * Method used to generate new Citizens without specific coordinates
+     * @return new Citizen object
      */
     public Citizen generateCitizen(){
         int money = new Random().nextInt(100);
@@ -49,7 +54,10 @@ public class Board {
     }
 
     /**
-     * method used to generate new Citizens with specific coordinates
+     * Method used to generate new Citizens with specific coordinates
+     * @param x position x
+     * @param y position y
+     * @return new Citizen object
      */
     public Citizen generateCitizen(int x, int y){
         int money = new Random().nextInt(100);

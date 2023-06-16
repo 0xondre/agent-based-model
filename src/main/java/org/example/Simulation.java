@@ -4,38 +4,42 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
- * Simulation class, used as main class of this simulation
+ * Class used as main class of this simulation
  */
 public class Simulation {
     /**
-     * main board object, whole simulation is taking place on this board
+     * Main board object, whole simulation is taking place on this board
      */
     private static Board board;
     /**
-     * list of citizens
+     * List of citizens
      */
     private List<Citizen> citizens;
     /**
-     * simulation class constructor
+     * Simulation class constructor
      */
     public Simulation() {
         board = new Board();
         citizens = new ArrayList<>();
     }
     /**
-     * add citizen to citizens list
+     * Add citizen to citizens list
+     * @param citizen citizen to add
      */
     public void addCitizen(Citizen citizen) {
         citizens.add(citizen);
     }
     /**
-     * remove citizen from citizens list
+     * Remove citizen from citizens list
+     * @param citizen citizen to remove
      */
     public void removeCitizen(Citizen citizen) {
         citizens.remove(citizen);
     }
     /**
-     * interactions between objects
+     * Interactions between objects
+     * @param data board state
+     * @return board state
      */
     public char[][] interactions(char[][] data){
         // list used to store info about objects that should be removed from board
@@ -159,7 +163,8 @@ public class Simulation {
         return data;
     }
     /**
-     * method that starts whole simulation
+     * Method that starts whole simulation
+     * @throws FileNotFoundException
      */
     public void start() throws FileNotFoundException {
         int i=1;
@@ -191,7 +196,9 @@ public class Simulation {
         csvSaver.close();
     }
     /**
-     * main class
+     * Main class
+     * @param args args
+     * @throws FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException {
         Simulation simulation = new Simulation();

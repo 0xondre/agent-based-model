@@ -6,11 +6,12 @@ import java.io.PrintWriter;
 import java.util.List;
 
 /**
- * class used to save files to csv
+ * Class used to save files to csv
  */
 public class CsvSaver {
     /**
      * CsvSaver class constructor
+     * @throws FileNotFoundException
      */
     public CsvSaver() throws FileNotFoundException {
 
@@ -24,7 +25,9 @@ public class CsvSaver {
      */
     private PrintWriter out = new PrintWriter(csvFile);
     /**
-     * method that saves data to file
+     * Method that saves data to file
+     * @param citizens List of the citizens
+     * @param i turn
      */
     public void saveToCsv(List<Citizen> citizens, int i){
         out.printf("\nTura %d\n", i);
@@ -35,7 +38,7 @@ public class CsvSaver {
         }
     }
     /**
-     * closing csvFile
+     * Closing csvFile
      */
     public void close(){
         out.close();

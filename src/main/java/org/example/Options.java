@@ -1,27 +1,27 @@
 package org.example;
 
 /**
- * Options class used to store simulation options
+ * Class used to store simulation options
  */
 public class Options {
     /**
-     * number of citizens in first turn
+     * Number of citizens in first turn
      */
     public static final int STARTING_NUMBER_OF_CITIZENS = 10;
     /**
-     * board width
+     * Board width
      */
     public static final int BOARD_WIDTH = 20;
     /**
-     * board height
+     * Board height
      */
     public static final int BOARD_HEIGHT = 15;
     /**
-     * turn time in ms
+     * Turn time in ms
      */
     public static final int TURN_TIME = 200;
     /**
-     * amount of turns
+     * Amount of turns
      */
     public static final int TURN_AMOUNT =100;
 
