@@ -2,17 +2,26 @@ package org.example;
 
 import java.util.Random;
 
+/**
+ * Board class, used to check if object is in the valid position and generate new objects on it
+ */
 public class Board {
 
-    // default board constructor
+    /**
+     * default board constructor
+     */
     public Board() {
 
     }
-    // return boolean describing if position is on the board
+    /**
+     * return boolean describing if position is on the board
+     */
     public boolean isValidPosition(int x, int y) {
         return x >= 0 && x < Options.BOARD_WIDTH && y >= 0 && y < Options.BOARD_HEIGHT;
     }
-    // print the board to the terminal
+    /**
+     * print the board to the terminal
+     */
     public void printBoard(char[][] data)  {
         for (int y = 0; y < Options.BOARD_HEIGHT; y++) {
             System.out.print("|");
@@ -23,15 +32,13 @@ public class Board {
             System.out.println();
         }
     }
-    // method used to generate new Citizens without specific coordinates
+    /**
+     * method used to generate new Citizens without specific coordinates
+     */
     public Citizen generateCitizen(){
-        // how much money will this object have at the start
         int money = new Random().nextInt(100);
-
-        // occupation lottery
         int occupation = new Random().nextInt(4);
 
-        // occupation selector
         return switch (occupation) {
             case 0 -> new Normie(money);
             case 1 -> new Thief(money);
@@ -41,15 +48,13 @@ public class Board {
         };
     }
 
-    // method used to generate new Citizens with specific coordinates
+    /**
+     * method used to generate new Citizens with specific coordinates
+     */
     public Citizen generateCitizen(int x, int y){
-        // how much money will this object have at the start
         int money = new Random().nextInt(100);
-
-        // occupation lottery
         int occupation = new Random().nextInt(4);
 
-        // occupation selector
         return switch (occupation) {
             case 0 -> new Normie(x,y,money);
             case 1 -> new Thief(x,y,money);

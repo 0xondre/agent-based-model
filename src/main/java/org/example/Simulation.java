@@ -3,25 +3,40 @@ package org.example;
 import java.io.FileNotFoundException;
 import java.util.*;
 
+/**
+ * Simulation class, used as main class of this simulation
+ */
 public class Simulation {
-    // main board object, whole simulation is taking place on this board
+    /**
+     * main board object, whole simulation is taking place on this board
+     */
     private static Board board;
-    // list of citizens
+    /**
+     * list of citizens
+     */
     private List<Citizen> citizens;
-    // simulation class constructor
+    /**
+     * simulation class constructor
+     */
     public Simulation() {
         board = new Board();
         citizens = new ArrayList<>();
     }
-    // add citizen to citizens list
+    /**
+     * add citizen to citizens list
+     */
     public void addCitizen(Citizen citizen) {
         citizens.add(citizen);
     }
-    // remove citizen from citizens list
+    /**
+     * remove citizen from citizens list
+     */
     public void removeCitizen(Citizen citizen) {
         citizens.remove(citizen);
     }
-    // interactions between objects
+    /**
+     * interactions between objects
+     */
     public char[][] interactions(char[][] data){
         // list used to store info about objects that should be removed from board
         List<Citizen> removeList = new ArrayList<>();
@@ -143,7 +158,9 @@ public class Simulation {
         // return board state
         return data;
     }
-    // method that starts whole simulation
+    /**
+     * method that starts whole simulation
+     */
     public void start() throws FileNotFoundException {
         int i=1;
         // CsvSaver object used to manipulate csv file
@@ -173,7 +190,9 @@ public class Simulation {
         // close file.csv
         csvSaver.close();
     }
-    // main class
+    /**
+     * main class
+     */
     public static void main(String[] args) throws FileNotFoundException {
         Simulation simulation = new Simulation();
 
